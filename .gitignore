@@ -1,2 +1,30 @@
-node_modules
+# Pinokio & Application Virtual Environments
+env/
+app/
+node_modules/
 .DS_Store
+
+# Large model files and checkpoints
+app/models/
+llama.cpp/
+cache/
+
+# Python caching and byte-code
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pinokio execution logs
+logs/
+
+# Temporary / Backup folders
+MagicQuillV2-main temp/
+
+# Debug and output test images (keep icon.png)
+controlnet_dry_run_out.png
+app/debug_kontext_raw_output.png
+app/foreground_test_debug.png
+app/foreground_test_in.png
+app/foreground_test_out.png
+app/short_test_out.png

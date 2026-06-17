@@ -5,7 +5,12 @@ module.exports = {
       method: "shell.run",
       params: {
         venv: "env",                // Edit this to customize the venv folder path
-        env: { },                   // Edit this to customize environment variables (see documentation)
+        env: {
+          "HF_HOME": "{{path.resolve(cwd, 'cache/HF_HOME')}}",
+          "TORCH_HOME": "{{path.resolve(cwd, 'cache/TORCH_HOME')}}",
+          "GRADIO_TEMP_DIR": "{{path.resolve(cwd, 'cache/GRADIO_TEMP_DIR')}}",
+          "KMP_DUPLICATE_LIB_OK": "TRUE"
+        },
         path: "app",                // Edit this to customize the path to start the shell from
         message: [
           "python app.py",    // Edit with your custom commands
@@ -14,11 +19,11 @@ module.exports = {
           // The regular expression pattern to monitor.
           // When this pattern occurs in the shell terminal, the shell will return,
           // and the script will go onto the next step.
-          "event": "/http:\/\/\\S+/",   
+          event: "/(http:\\/\\/[0-9.:]+)/",   
 
           // "done": true will move to the next step while keeping the shell alive.
           // "kill": true will move to the next step after killing the shell.
-          "done": true
+          done: true
         }]
       }
     },
@@ -28,7 +33,7 @@ module.exports = {
       method: "local.set",
       params: {
         // the input.event is the regular expression match object from the previous step
-        url: "{{input.event[0]}}"
+        url: "{{input.event[1]}}"
       }
     }
   ]
