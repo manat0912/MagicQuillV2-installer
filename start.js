@@ -9,7 +9,8 @@ module.exports = {
           "HF_HOME": "{{path.resolve(cwd, 'cache/HF_HOME')}}",
           "TORCH_HOME": "{{path.resolve(cwd, 'cache/TORCH_HOME')}}",
           "GRADIO_TEMP_DIR": "{{path.resolve(cwd, 'cache/GRADIO_TEMP_DIR')}}",
-          "KMP_DUPLICATE_LIB_OK": "TRUE"
+          "KMP_DUPLICATE_LIB_OK": "TRUE",
+          "MAGICQUILL_MAX_SIDE": "768"
         },
         path: "app",                // Edit this to customize the path to start the shell from
         message: [
